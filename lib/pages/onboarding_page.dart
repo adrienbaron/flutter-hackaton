@@ -61,7 +61,7 @@ class OnBoardingPage extends StatelessWidget {
       appBar: AppBar(title: Text('Onboarding')),
       body: FancyOnBoarding(
         pageList: pageList,
-        mainPageRoute: '/home',
+        mainPageRoute: '/login',
       ),
     );
   }
