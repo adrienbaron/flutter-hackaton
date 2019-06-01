@@ -32,10 +32,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
 
     service = AuthService();
+    hasSeenOnBoarding();
+  }
+
+  void hasSeenOnBoarding() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('oboarding.hasSeen', true);
   }
