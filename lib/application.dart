@@ -9,16 +9,24 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: config.applicationName,
-      debugShowCheckedModeBanner: false,
+        title: config.applicationName,
+        debugShowCheckedModeBanner: false,
 
-      ///
-      /// Routes
-      ///
-      routes: ApplicationRoutes.routes,
+        ///
+        /// Routes
+        ///
+        routes: ApplicationRoutes.routes,
 
 //            home: OnBoardingPage(),
-      home: HomePage(),
-    );
+        home: LoginPage(),
+        theme: ThemeData(
+          // Define the default Brightness and Colors
+          brightness: Brightness.dark,
+          primaryColor: Colors.lightBlue[800],
+          accentColor: Colors.cyan[600],
+
+          // Define the default Font Family
+          fontFamily: 'Montserrat',
+        ));
   }
 }
