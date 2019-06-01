@@ -21,8 +21,9 @@ class _LoginPageState extends State<LoginPage> {
           child: Center(
             child: RaisedButton(
               child: Text('Sign-in with Google'),
-              onPressed: () {
-                service.googleSignIn();
+              onPressed: () async {
+                await service.googleSignIn();
+                Navigator.pushNamed(context, '/home');
               },
             ),
           ),
