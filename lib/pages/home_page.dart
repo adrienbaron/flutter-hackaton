@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blueGrey,
       ),
       home: MyHomePage(title: 'Choose Your Mentor'),
     );
@@ -69,9 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Widget> _getMatchCard() {
     List<MatchCard> cards = new List();
-    cards.add(MatchCard(255, 0, 0, 10));
-    cards.add(MatchCard(0, 255, 0, 20));
-    cards.add(MatchCard(0, 0, 255, 30));
+    cards.add(MatchCard(255, 255, 255, 0));
+    cards.add(MatchCard(255, 255, 255, 20));
+    cards.add(MatchCard(255, 255, 255, 30));
 
     List<Widget> cardList = new List();
 
@@ -115,12 +115,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Name',
                     style: TextStyle(
                       fontFamily: 'Pacifico',
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 35,
                     ),
                   ),
                   Text(
-                    'email',
+                    'MY EMAIL',
                     style: TextStyle(
                         fontFamily: 'SourceSansPro',
                         color: Colors.blueGrey.shade800,
@@ -131,8 +131,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Divider(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
+                  ),
+                  Text(
+                    'description',
+                    style: TextStyle(
+                        fontFamily: 'SourceSansPro',
+                        color: Colors.blueGrey.shade800,
+                        fontSize: 20,
+                        letterSpacing: 2.5,
+                        fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -141,7 +150,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ));
     }
-
     return cardList;
   }
 }
