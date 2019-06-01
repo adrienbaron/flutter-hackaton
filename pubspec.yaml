@@ -9,8 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
 
   cupertino_icons: ^0.1.2
 
@@ -34,18 +32,9 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/images/avatar.png
-   - assets/images/flag-fr.png
-   - assets/images/flag-en.png
-   - assets/images/flag-de.png
-   - assets/images/flag-es.png
-   - assets/images/flag-it.png
-   - assets/images/flag-nl.png
-   - assets/images/flag-pt.png
-   - assets/locales/locale_fr.json
-   - assets/locales/locale_en.json
-   - assets/images/home.png
-   - assets/images/login.jpg
-   - assets/images/mentor_mentee.png
-   - assets/images/learning.png
-   - assets/images/profile.png
+    - assets/images/home.png
+    - assets/images/login.jpg
+    - assets/images/mentor_mentee.png
+    - assets/learning.png
+    - assets/images/profile.png
+    - assets/images/about_us.jpg
