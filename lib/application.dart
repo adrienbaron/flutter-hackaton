@@ -32,13 +32,9 @@ class _ApplicationState extends State<Application> {
 
         home: homePage,
         theme: ThemeData(
-          // Define the default Brightness and Colors
           brightness: Brightness.dark,
-          primaryColor: Colors.lightBlue[800],
+          primaryColor: Colors.blueGrey,
           accentColor: Colors.cyan[600],
-
-          // Define the default Font Family
-          fontFamily: 'Montserrat',
         ));
   }
 
