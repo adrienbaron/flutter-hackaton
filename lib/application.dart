@@ -58,12 +58,6 @@ class _ApplicationState extends State<Application> {
             ///
             routes: ApplicationRoutes.routes,
 
-            ///
-            /// For unknown reason, we need to launch an intermediate
-            /// fake page, which will only and directly redirect to
-            /// the ControllerPage, in order for the latter to be
-            /// able to listen to Stream events !!!
-            ///
             home: OnBoardingPage(),
           );
         },

@@ -6,24 +6,24 @@ class OnBoardingPage extends StatelessWidget {
   final pageList = [
     PageModel(
         color: const Color(0xFF678FB4),
-        heroAssetPath: 'assets/hotels.png',
-        title: Text('Hotels',
+        heroAssetPath: 'assets/images/about_us.jpg',
+        title: Text('Onboarding',
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text('All hotels and hostels are sorted by hospitality rating',
+        body: Text('Compolete your registration here',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/key.png'),
+        iconAssetPath: 'assets/images/login.png'),
     PageModel(
         color: const Color(0xFF65B0B4),
-        heroAssetPath: 'assets/banks.png',
-        title: Text('Banks',
+        heroAssetPath: 'assets/images/home.png',
+        title: Text('login',
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
@@ -36,10 +36,10 @@ class OnBoardingPage extends StatelessWidget {
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/wallet.png'),
+        iconAssetPath: 'assets/images/learning.png'),
     PageModel(
       color: const Color(0xFF9B90BC),
-      heroAssetPath: 'assets/stores.png',
+      heroAssetPath: 'assets/images/home.png',
       title: Text('Store',
           style: TextStyle(
             fontWeight: FontWeight.w800,
@@ -52,7 +52,7 @@ class OnBoardingPage extends StatelessWidget {
             color: Colors.white,
             fontSize: 18.0,
           )),
-      iconAssetPath: 'assets/shopping_cart.png',
+      iconAssetPath: 'assets/images/learning.png',
     ),
   ];
   @override

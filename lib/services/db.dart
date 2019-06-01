@@ -1,28 +1,25 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:async';
+import 'package:flutter_mentor/models/request.dart';
+import 'package:flutter_mentor/models/user_profile.dart';
 import 'package:rxdart/rxdart.dart';
-import './globals.dart';
 
 /// Static global state. Immutable services that do not care about build context.
 class Global {
   // App Data
   static final String title = 'Fireship';
 
-  // Services
-  static final FirebaseAnalytics analytics = FirebaseAnalytics();
-
   // Data Models
   static final Map models = {
-    Topic: (data) => Topic.fromMap(data),
-    Quiz: (data) => Quiz.fromMap(data),
-    Report: (data) => Report.fromMap(data),
+    UserProfile: (data) => UserProfile.fromJSON(data),
+    Request: (data) => Request.fromMap(data),
   };
 
   // Firestore References for Writes
-  static final Collection<Topic> topicsRef = Collection<Topic>(path: 'topics');
-  static final UserData<Report> reportRef =
-      UserData<Report>(collection: 'reports');
+  static final Collection<UserProfile> topicsRef = Collection<UserProfile>(path: 'users');
+  static final Collection<Request> reportRef = Collection<Request>(path: 'requests');
 }
 
 class Document<T> {

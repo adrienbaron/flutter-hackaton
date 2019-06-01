@@ -11,7 +11,6 @@ class RegistrationFormBloc extends Object with EmailValidator, PasswordValidator
   final BehaviorSubject<String> _firstNameController = BehaviorSubject<String>();
   final BehaviorSubject<String> _lastNameController = BehaviorSubject<String>();
   final BehaviorSubject<String> _aliasController = BehaviorSubject<String>();
-  final BehaviorSubject<String> _localityController = BehaviorSubject<String>();
   final BehaviorSubject<String> _passwordConfirmController = BehaviorSubject<String>();
   final BehaviorSubject<bool> _termsConditionsController = BehaviorSubject<bool>();
 
@@ -23,7 +22,6 @@ class RegistrationFormBloc extends Object with EmailValidator, PasswordValidator
   Function(String) get onFirstNameChanged => _firstNameController.sink.add;
   Function(String) get onLastNameChanged => _lastNameController.sink.add;
   Function(String) get onAliasChanged => _aliasController.sink.add;
-  Function(String) get onLocalityChanged => _localityController.sink.add;
   Function(String) get onRetypePasswordChanged => _passwordConfirmController.sink.add;
   Function(bool) get onTermsConditionsChanged => _termsConditionsController.sink.add;
 
@@ -34,7 +32,6 @@ class RegistrationFormBloc extends Object with EmailValidator, PasswordValidator
   Stream<String> get password => _passwordController.stream.transform(validatePassword);
   Stream<String> get firstName => _firstNameController.stream.transform(validateNotEmpty);
   Stream<String> get lastName => _lastNameController.stream.transform(validateNotEmpty);
-  Stream<String> get locality => _localityController.stream.transform(validateNotEmpty);
   Stream<String> get alias => _aliasController.stream.transform(validateAlias);
   Stream<bool> get termsConditions => _termsConditionsController.stream.transform(validateChecked);
   Stream<String> get confirmPassword => _passwordConfirmController.stream.transform(validatePassword)
@@ -50,26 +47,24 @@ class RegistrationFormBloc extends Object with EmailValidator, PasswordValidator
   //
   // Registration button
   //
-  Stream<bool> get canRegisterPassword => Observable.combineLatest8(
+  Stream<bool> get canRegisterPassword => Observable.combineLatest7(
                                       email, 
                                       password,
                                       confirmPassword,
                                       firstName,
                                       lastName,
-                                      locality,
                                       alias,
                                       termsConditions, 
-                                      (e, p, cp, f, l, c, a, t) => t
+                                      (e, p, cp, f, l, a, t) => t
                                     );
 
-  Stream<bool> get canRegisterNoPassword => Observable.combineLatest6(
+  Stream<bool> get canRegisterNoPassword => Observable.combineLatest5(
                                       email, 
                                       firstName,
                                       lastName,
-                                      locality,
                                       alias,
                                       termsConditions, 
-                                      (e, f, l, c, a, t) => t
+                                      (e, f, l, a, t) => t
                                     );
 
   @override
@@ -79,7 +74,6 @@ class RegistrationFormBloc extends Object with EmailValidator, PasswordValidator
     _firstNameController?.close();
     _lastNameController?.close();
     _aliasController?.close();
-    _localityController?.close();
     _passwordConfirmController?.close();
     _termsConditionsController?.close();
   }
