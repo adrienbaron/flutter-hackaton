@@ -69,9 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Widget> _getMatchCard() {
     List<MatchCard> cards = new List();
-    cards.add(MatchCard(255, 0, 0, 10));
-    cards.add(MatchCard(0, 255, 0, 20));
-    cards.add(MatchCard(0, 0, 255, 30));
+    cards.add(MatchCard(255, 255, 255, 0));
+    cards.add(MatchCard(255, 255, 255, 20));
+    cards.add(MatchCard(255, 255, 255, 30));
 
     List<Widget> cardList = new List();
 
@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Name',
                     style: TextStyle(
                       fontFamily: 'Pacifico',
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 35,
                     ),
                   ),
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Divider(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                   Text(
