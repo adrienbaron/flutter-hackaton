@@ -14,6 +14,16 @@ class Request {
     this.text,
     this.assignmentStatus,
   });
+
+  factory Request.fromMap(Map<String, dynamic> json){
+    return Request(
+      requestId: json["requestId"],
+      tag: json["tag"],
+      status: RequestStatus.values[int.parse(json["status"])],
+      text: json["text"],
+      assignmentStatus: RequestAssignmentStatus.values[int.parse(json["assignmentStatus"])],
+    );
+  }
 }
 
 enum RequestStatus {

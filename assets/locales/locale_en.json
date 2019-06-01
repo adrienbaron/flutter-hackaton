@@ -28,5 +28,12 @@
         "messages": {
             "login_email_failure": "Authentication failure"
         }
+    },
+    "tags": {
+        "fundamentals": "Fundementals",
+        "architecture": "Architecture",
+        "animations": "Animations",
+        "hummingbird": "HummingBird",
+        "desktop": "Desktop"
     }
 }
