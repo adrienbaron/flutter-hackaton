@@ -29,7 +29,6 @@ class _ApplicationState extends State<Application> {
         /// Routes
         ///
         routes: ApplicationRoutes.routes,
-
         home: homePage,
         theme: ThemeData(
           brightness: Brightness.dark,
@@ -48,6 +47,8 @@ class _ApplicationState extends State<Application> {
   void choseHomePage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool hasSeenOnBoarding = prefs.getBool('oboarding.hasSeen');
-    homePage = hasSeenOnBoarding ? LoginPage() : OnBoardingPage();
+    homePage = hasSeenOnBoarding == null || hasSeenOnBoarding == false
+        ? OnBoardingPage()
+        : LoginPage();
   }
 }
