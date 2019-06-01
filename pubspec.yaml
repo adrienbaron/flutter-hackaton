@@ -46,5 +46,8 @@ flutter:
     - assets/images/student.png
     - assets/images/teacher.png
     - assets/images/path.png
+    - assets/images/cap.png
+    - assets/images/trophy.png
+    - assets/images/info.png
 
 
