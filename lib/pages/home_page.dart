@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+class MoreSoon {Text('more soon'),};
+
 class MatchCard {
   int redColor = 0;
   int greenColor = 0;
@@ -150,7 +152,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ));
     }
-
     return cardList;
   }
 }
