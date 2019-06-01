@@ -12,5 +12,21 @@
     "language_selector": {
         "fr": "Français",
         "en": "English"
+    },
+    "authentication": {
+        "hint": {
+            "email": "Your Email address",
+            "password": "Your password"
+        },
+        "labels": {
+            "email": "Email address",
+            "password": "Password"
+        },
+        "buttons": {
+            "submit": "Submit"
+        },
+        "messages": {
+            "login_email_failure": "Authentication failure"
+        }
     }
 }

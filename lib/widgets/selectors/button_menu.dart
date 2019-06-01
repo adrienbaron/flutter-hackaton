@@ -273,8 +273,6 @@ class _ButtonMenuRoute<T> extends PopupRoute<_ButtonMenuRouteResult<T>> {
       _checkBelow();
     }
 
-    //TODO: when I will have the time => find a solution to force the dimensions of the menu
-
     if (scrollController == null) {
       scrollController = ScrollController(initialScrollOffset: 0.0);
     }

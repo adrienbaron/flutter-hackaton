@@ -10,17 +10,18 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
+  
   flutter_localizations:
     sdk: flutter
 
   http: '0.11.3+17'
   rxdart: '0.21.0'
   shared_preferences: '0.4.2'
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
 
 
 # The following section is specific to Flutter.
