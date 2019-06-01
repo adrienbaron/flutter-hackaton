@@ -1,0 +1,16 @@
+{
+    "validators": {
+        "invalid": {
+            "email": "Adresse email non valide",
+            "password": "Mot de passe incorrect",
+            "empty": "Ce champ ne peut être vide",
+            "retype_password": "Retapez le mot de passe",
+            "not_checked": "Veuillez cocher",
+            "alias": "Alias non valide"
+        }
+    },
+    "language_selector": {
+        "fr": "Français",
+        "en": "English"
+    }
+}

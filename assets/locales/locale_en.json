@@ -1,0 +1,16 @@
+{
+    "validators": {
+        "invalid": {
+            "email": "Invalid email address",
+            "password": "Invalid Password pattern",
+            "empty": "This field cannot be empty",
+            "retype_password": "Retype password",
+            "not_checked": "Please check",
+            "alias": "Invalid Alias"
+        }
+    },
+    "language_selector": {
+        "fr": "Français",
+        "en": "English"
+    }
+}
