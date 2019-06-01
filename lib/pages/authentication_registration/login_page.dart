@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
         errorMessage = "Please login to access the app.";
       });
     } else {
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/home');
     }
     setState(() {
       isLoading = false;

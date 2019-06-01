@@ -6,6 +6,7 @@ class Request {
   final RequestStatus status;
   final String text;
   final RequestAssignmentStatus assignmentStatus;
+  final int userId;
 
   Request({
     this.requestId,
@@ -13,17 +14,28 @@ class Request {
     this.status,
     this.text,
     this.assignmentStatus,
+    this.userId,
   });
 
   factory Request.fromMap(Map<String, dynamic> json){
     return Request(
       requestId: json["requestId"],
-      tag: json["tag"],
-      status: RequestStatus.values[int.parse(json["status"])],
+      tag: TagsHelper.fromText(json["tag"]),
+      status: RequestStatus.values[json["status"]],
       text: json["text"],
-      assignmentStatus: RequestAssignmentStatus.values[int.parse(json["assignmentStatus"])],
+      assignmentStatus: RequestAssignmentStatus.values[json["assignmentStatus"]],
+      userId: json["userId"],
     );
   }
+
+  Map<String, dynamic> toMap() => {
+    "requestId": requestId,
+    "status": status.index,
+    "tag": tag.toString().split('.')[1],
+    "text": text,
+    "assignmentStatus": assignmentStatus.index,
+    "userId": userId,
+  };
 }
 
 enum RequestStatus {
