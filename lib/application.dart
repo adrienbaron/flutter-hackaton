@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mentor/config/config.dart';
 import 'package:flutter_mentor/pages/authentication_registration/login_page.dart';
-import 'package:flutter_mentor/pages/home_page.dart';
 import 'package:flutter_mentor/pages/onboarding_page.dart';
 import 'package:flutter_mentor/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,8 +46,10 @@ class _ApplicationState extends State<Application> {
   void choseHomePage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool hasSeenOnBoarding = prefs.getBool('oboarding.hasSeen');
-    homePage = hasSeenOnBoarding == null || hasSeenOnBoarding == false
-        ? OnBoardingPage()
-        : LoginPage();
+    setState(() {
+      homePage = hasSeenOnBoarding == null || hasSeenOnBoarding == false
+          ? OnBoardingPage()
+          : LoginPage();
+    });
   }
 }

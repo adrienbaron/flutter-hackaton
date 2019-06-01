@@ -6,47 +6,46 @@ class OnBoardingPage extends StatelessWidget {
   final pageList = [
     PageModel(
         color: const Color(0xFF678FB4),
-        heroAssetPath: 'assets/images/about_us.jpg',
-        title: Text('Onboarding',
+        heroAssetPath: 'assets/images/mentor_mentee.png',
+        title: Text('Looking for a Mentor ?',
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
-              fontSize: 34.0,
+              fontSize: 20.0,
             )),
-        body: Text('Compolete your registration here',
+        body: Text('Here you find the one for you.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/images/login.jpg'),
+        iconAssetPath: 'assets/images/mentor_mentee.png'),
     PageModel(
         color: const Color(0xFF65B0B4),
-        heroAssetPath: 'assets/images/home.png',
-        title: Text('login',
+        heroAssetPath: 'assets/images/profile.png',
+        title: Text('Becoming a Mentor ?',
             style: TextStyle(
               fontWeight: FontWeight.w800,
               color: Colors.white,
-              fontSize: 34.0,
+              fontSize: 20.0,
             )),
-        body: Text(
-            'We carefully verify all banks before adding them into the app',
+        body: Text('You can offer your services here.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/images/learning.png'),
+        iconAssetPath: 'assets/images/mentor_mentee.png'),
     PageModel(
       color: const Color(0xFF9B90BC),
-      heroAssetPath: 'assets/images/home.png',
-      title: Text('Store',
+      heroAssetPath: 'assets/images/learning.png',
+      title: Text('My Path',
           style: TextStyle(
             fontWeight: FontWeight.w800,
             color: Colors.white,
-            fontSize: 34.0,
+            fontSize: 20.0,
           )),
-      body: Text('All local stores are categorized for your convenience',
+      body: Text('You can find the right path for you',
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
@@ -58,7 +57,6 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Onboarding')),
       body: FancyOnBoarding(
         pageList: pageList,
         mainPageRoute: '/login',
