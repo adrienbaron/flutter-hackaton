@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
         body: Container(
           child: Center(
             child: RaisedButton(
-              child: Text('login'),
+              child: Text('Sign-in with Google'),
               onPressed: () {
                 service.googleSignIn();
               },
