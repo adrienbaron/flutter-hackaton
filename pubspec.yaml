@@ -34,7 +34,7 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/images/avatar.png
+
    - assets/images/flag-fr.png
    - assets/images/flag-en.png
    - assets/images/flag-de.png
@@ -44,8 +44,13 @@ flutter:
    - assets/images/flag-pt.png
    - assets/locales/locale_fr.json
    - assets/locales/locale_en.json
+
+
    - assets/images/home.png
+   - assets/images/about_us.jpg
+   - assets/images/learning.png
    - assets/images/login.jpg
    - assets/images/mentor_mentee.png
-   - assets/images/learning.png
    - assets/images/profile.png
+   - assets/images/user.png
+

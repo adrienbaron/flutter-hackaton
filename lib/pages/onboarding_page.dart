@@ -19,7 +19,7 @@ class OnBoardingPage extends StatelessWidget {
               color: Colors.white,
               fontSize: 18.0,
             )),
-        iconAssetPath: 'assets/images/login.png'),
+        iconAssetPath: 'assets/images/login.jpg'),
     PageModel(
         color: const Color(0xFF65B0B4),
         heroAssetPath: 'assets/images/home.png',
@@ -61,7 +61,7 @@ class OnBoardingPage extends StatelessWidget {
       appBar: AppBar(title: Text('Onboarding')),
       body: FancyOnBoarding(
         pageList: pageList,
-        mainPageRoute: '/home',
+        mainPageRoute: '/login',
       ),
     );
   }
