@@ -44,3 +44,8 @@ flutter:
    - assets/images/flag-pt.png
    - assets/locales/locale_fr.json
    - assets/locales/locale_en.json
+   - assets/images/home.png
+   - assets/images/login.jpg
+   - assets/images/mentor_mentee.png
+   - assets/learning.png
+   - assets/images/profile.png
