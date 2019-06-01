@@ -1,62 +1,74 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mentor/models/request.dart';
+import 'package:flutter_mentor/widgets/request_card.dart';
 
-class MatchCard {
-  int redColor = 0;
-  int greenColor = 0;
-  int blueColor = 0;
-  double margin = 0;
+const double _kTopMargin = 10.0;
 
-  MatchCard(int red, int green, int blue, double marginTop) {
-    redColor = red;
-    greenColor = green;
-    blueColor = blue;
-    margin = marginTop;
-  }
-}
-
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
-      home: MyHomePage(title: 'Choose Your Mentor'),
-    );
-  }
+  _HomePageState createState() => _HomePageState();
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  List<Widget> cardList;
-
-  void _removeCard(index) {
-    setState(() {
-      cardList.removeAt(index);
-    });
-  }
+class _HomePageState extends State<HomePage> {
+  List<Widget> cardList = <Widget>[];
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    cardList = _getMatchCard();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      Firestore.instance
+          .collection("Requests")
+          .where("userId", isEqualTo: 123)
+          .snapshots()
+          .listen((data) {
+
+        cardList = data.documents.map((document) {
+          Request request = Request.fromMap(document.data);
+
+          return Positioned(
+            top: _kTopMargin,
+            child: Draggable(
+              onDragEnd: (drag) {
+                _removeCard();
+              },
+              childWhenDragging: Container(),
+              feedback: Card(
+                elevation: 12,
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: Container(
+                  width: 340,
+                  height: 500,
+                ),
+              ),
+              child: RequestCard(
+                red: 255,
+                green: 255,
+                blue: 255,
+                requestText: request.text,
+              ),
+            ),
+          );
+        }).toList();
+        setState((){});
+      });
+    });
+  }
+
+  void _removeCard() {
+    setState(() {
+      cardList.removeAt(cardList.length - 1);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Main Title"),
       ),
       body: Center(
         child: Stack(
@@ -66,90 +78,76 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
 
-  List<Widget> _getMatchCard() {
-    List<MatchCard> cards = new List();
-    cards.add(MatchCard(255, 255, 255, 0));
-    cards.add(MatchCard(255, 255, 255, 20));
-    cards.add(MatchCard(255, 255, 255, 30));
 
-    List<Widget> cardList = new List();
+class RequestCard extends StatelessWidget {
+  RequestCard({
+    Key key,
+    this.red,
+    this.green,
+    this.blue,
+    this.requestText,
+  }): super(key: key);
 
-    for (int x = 0; x < 3; x++) {
-      cardList.add(Positioned(
-        top: cards[x].margin,
-        child: Draggable(
-          onDragEnd: (drag) {
-            _removeCard(x);
-          },
-          childWhenDragging: Container(),
-          feedback: Card(
-            elevation: 12,
-            color: Color.fromARGB(255, cards[x].redColor, cards[x].greenColor,
-                cards[x].blueColor),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 340,
-              height: 500,
+  final int red;
+  final int green;
+  final int blue;
+  final String requestText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 12,
+      color: Color.fromARGB(
+          255, red, green, blue),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Container(
+        width: 340,
+        height: 500,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.blueGrey.shade500,
+              backgroundImage: AssetImage('images'),
             ),
-          ),
-          child: Card(
-            elevation: 12,
-            color: Color.fromARGB(255, cards[x].redColor, cards[x].greenColor,
-                cards[x].blueColor),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 340,
-              height: 500,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundColor: Colors.blueGrey.shade500,
-                    backgroundImage: AssetImage('images'),
-                  ),
-                  Text(
-                    'Name',
-                    style: TextStyle(
-                      fontFamily: 'Pacifico',
-                      color: Colors.black,
-                      fontSize: 35,
-                    ),
-                  ),
-                  Text(
-                    'MY EMAIL',
-                    style: TextStyle(
-                        fontFamily: 'SourceSansPro',
-                        color: Colors.blueGrey.shade800,
-                        fontSize: 20,
-                        letterSpacing: 2.5,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: Divider(
-                      color: Colors.black,
-                    ),
-                  ),
-                  Text(
-                    'description',
-                    style: TextStyle(
-                        fontFamily: 'SourceSansPro',
-                        color: Colors.blueGrey.shade800,
-                        fontSize: 20,
-                        letterSpacing: 2.5,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
+            Text(
+              'Name',
+              style: TextStyle(
+                fontFamily: 'Pacifico',
+                color: Colors.black,
+                fontSize: 35,
               ),
             ),
-          ),
+            Text(
+              'MY EMAIL',
+              style: TextStyle(
+                  fontFamily: 'SourceSansPro',
+                  color: Colors.blueGrey.shade800,
+                  fontSize: 20,
+                  letterSpacing: 2.5,
+                  fontWeight: FontWeight.bold),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Divider(
+                color: Colors.black,
+              ),
+            ),
+            Text(
+              requestText,
+              style: TextStyle(
+                  fontFamily: 'SourceSansPro',
+                  color: Colors.blueGrey.shade800,
+                  fontSize: 20,
+                  letterSpacing: 2.5,
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
-      ));
-    }
-    return cardList;
+      ),
+    );
   }
 }
