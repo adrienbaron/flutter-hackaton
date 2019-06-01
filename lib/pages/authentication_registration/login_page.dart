@@ -33,7 +33,16 @@ class _LoginPageState extends State<LoginPage> {
                           valueColor:
                               AlwaysStoppedAnimation<Color>(Colors.black),
                         )
-                      : Text('Sign-in with Google'),
+                      : Row(
+                          children: <Widget>[
+                            Padding(
+                              child: Icon(Icons.person),
+                              padding: EdgeInsets.only(right: 8.0),
+                            ),
+                            Text('Sign-in with Google'),
+                          ],
+                          mainAxisSize: MainAxisSize.min,
+                        ),
                   onPressed: isLoading
                       ? null
                       : () async {
