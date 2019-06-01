@@ -8,9 +8,6 @@ import 'package:rxdart/rxdart.dart';
 
 /// Static global state. Immutable services that do not care about build context.
 class Global {
-  // App Data
-  static final String title = 'Fireship';
-
   // Data Models
   static final Map models = {
     UserProfile: (data) => UserProfile.fromJSON(data),

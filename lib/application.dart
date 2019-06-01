@@ -5,6 +5,7 @@ import 'package:flutter_mentor/blocs/helpers/bloc_provider.dart';
 import 'package:flutter_mentor/blocs/translations_bloc.dart';
 import 'package:flutter_mentor/config/config.dart';
 import 'package:flutter_mentor/config/global_translations.dart';
+import 'package:flutter_mentor/pages/authentication_registration/login_page.dart';
 import 'package:flutter_mentor/pages/onboarding_page.dart';
 import 'package:flutter_mentor/routes.dart';
 
@@ -58,7 +59,8 @@ class _ApplicationState extends State<Application> {
             ///
             routes: ApplicationRoutes.routes,
 
-            home: OnBoardingPage(),
+//            home: OnBoardingPage(),
+            home: LoginPage(),
           );
         },
       ),
