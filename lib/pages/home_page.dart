@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blueGrey,
       ),
       home: MyHomePage(title: 'Choose Your Mentor'),
     );
@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Text(
-                    'email',
+                    'MY EMAIL',
                     style: TextStyle(
                         fontFamily: 'SourceSansPro',
                         color: Colors.blueGrey.shade800,
