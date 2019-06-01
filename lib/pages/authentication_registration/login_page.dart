@@ -20,11 +20,10 @@ class _LoginPageState extends State<LoginPage> {
       child: Scaffold(
         body: Container(
           decoration: new BoxDecoration(
-            image: new DecorationImage(
-              image: new AssetImage("assets/images/login_background.jpg"),
-              fit: BoxFit.cover,
-            )
-          ),
+              image: new DecorationImage(
+            image: new AssetImage("assets/images/login_background.jpg"),
+            fit: BoxFit.cover,
+          )),
           child: Center(
             child: SafeArea(
               child: Column(
@@ -49,26 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                             mainAxisSize: MainAxisSize.min,
                           ),
-                    onPressed: isLoading
-                        ? null
-                        : () async {
-                            setState(() {
-                              isLoading = true;
-                              errorMessage = null;
-                            });
-                            FirebaseUser user =
-                                await AuthService().googleSignIn();
-                            if (user == null) {
-                              setState(() {
-                                errorMessage = "Please login to access the app.";
-                              });
-                            } else {
-                              Navigator.pushNamed(context, '/home');
-                            }
-                            setState(() {
-                              isLoading = false;
-                            });
-                          },
+                    onPressed: isLoading ? null : () => login(),
                     padding: EdgeInsets.all(12),
                   ),
                   if (errorMessage != null)
@@ -83,6 +63,24 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void login() async {
+    setState(() {
+      isLoading = true;
+      errorMessage = null;
+    });
+    FirebaseUser user = await AuthService().googleSignIn();
+    if (user == null) {
+      setState(() {
+        errorMessage = "Please login to access the app.";
+      });
+    } else {
+      Navigator.pushNamed(context, '/home');
+    }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
