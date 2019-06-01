@@ -3,7 +3,15 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
 
-class _AuthService {
+class AuthService {
+  static final _singleton = AuthService._internal();
+
+  factory AuthService() {
+    return _singleton;
+  }
+
+  AuthService._internal();
+
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final Firestore _db = Firestore.instance;
@@ -42,21 +50,15 @@ class _AuthService {
   Future<void> updateUserData(FirebaseUser user) {
     DocumentReference reportRef = _db.collection('reports').document(user.uid);
 
-    return reportRef.setData({
-      'uid': user.uid,
-      'lastActivity': DateTime.now()
-    }, merge: true);
-
+    return reportRef.setData(
+      {'uid': user.uid, 'lastActivity': DateTime.now()},
+      merge: true,
+    );
   }
 
   Future<void> signOut() {
     return _auth.signOut();
   }
-
 }
 
-final _AuthService AuthService = _AuthService();
-
 // keytool -list -v -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
-
-
