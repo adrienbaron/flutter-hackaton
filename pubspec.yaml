@@ -42,12 +42,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/home.png
-    - assets/images/login.jpg
-    - assets/images/mentor_mentee.png
     - assets/images/login_background.jpg
-    - assets/learning.png
-    - assets/images/profile.png
-    - assets/images/about_us.jpg
+    - assets/images/student.png
+    - assets/images/teacher.png
+    - assets/images/path.png
 
 
