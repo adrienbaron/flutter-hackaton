@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mentor/widgets/selectors/language_selector.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -10,21 +9,17 @@ class LoginPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Authentication"),
-          actions: <Widget>[
-            LanguageSelector(),
-          ],
+          actions: <Widget>[],
         ),
         body: Container(
           child: Center(
             child: RaisedButton(
               child: Text('login'),
-              onPressed: (){},
+              onPressed: () {},
             ),
           ),
         ),
       ),
     );
   }
-
-  
 }
