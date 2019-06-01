@@ -8,8 +8,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  AuthService service;
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
             child: RaisedButton(
               child: Text('Sign-in with Google'),
               onPressed: () async {
-                await service.googleSignIn();
+                await AuthService.googleSignIn();
                 Navigator.pushNamed(context, '/home');
               },
             ),
@@ -35,8 +33,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-
-    service = AuthService();
     hasSeenOnBoarding();
   }
 
