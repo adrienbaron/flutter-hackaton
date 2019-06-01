@@ -103,6 +103,13 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               width: 340,
               height: 500,
+              child: Column(
+                children: <Widget>[
+                  ListTile(title: Text('Name:')),
+                  ListTile(title: Text('Email:')),
+                  ListTile(title: Text('Flutter Interests:')),
+                ],
+              ),
             ),
           ),
         ),
