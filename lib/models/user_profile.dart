@@ -1,13 +1,13 @@
 class UserProfile {
-  int profileId;
+  int userId;
   String firstName;
   String lastName;
   String email;
-  UserProfileState state;
+  UserProfileState status;
 
   UserProfile({
-    this.state = UserProfileState.inactive,
-    this.profileId = -1,
+    this.status = UserProfileState.inactive,
+    this.userId = -1,
     this.firstName = "",
     this.lastName = "",
     this.email = "",
@@ -15,10 +15,11 @@ class UserProfile {
 
   factory UserProfile.fromJSON(Map<String, dynamic> json){
     return UserProfile(
-      profileId: json["ProfileId"],
-      firstName: json["FirstName"],
-      lastName: json["LastName"],
-      email: json["Email"],
+      userId: json["userId"],
+      firstName: json["firstName"],
+      lastName: json["lastName"],
+      email: json["email"],
+      status: UserProfileState.values[int.parse(json["status"] ?? UserProfileState.inactive)],
     );
   }
 }

@@ -43,15 +43,15 @@ class UserProfileBloc implements BlocBase {
   BehaviorSubject<UserProfileState> _userProfileStateController =
       BehaviorSubject<UserProfileState>.seeded(UserProfileState.inactive);
   Stream<UserProfileState> get userProfileState => _userProfileStateController;
-  void _setUserProfileState(UserProfileState state) {
-    _userProfile.state = state;
-    _userProfileStateController.sink.add(state);
+  void _setUserProfileState(UserProfileState status) {
+    _userProfile.status = status;
+    _userProfileStateController.sink.add(status);
   }
 
   //
   // User Profile status
   //
-  UserProfileState get status => _userProfile.state;
+  UserProfileState get status => _userProfile.status;
 
   //
   // Current User Profile
@@ -69,9 +69,9 @@ class UserProfileBloc implements BlocBase {
   /// User wants to log out
   ///
   void logout() async {
-    UserProfileState state = UserProfileState.inactive;
+    UserProfileState status = UserProfileState.inactive;
     _userProfile = UserProfile(
-      state: state,
+      status: status,
     );
 
     //
@@ -82,7 +82,7 @@ class UserProfileBloc implements BlocBase {
     //
     // Finally reset the UserProfileState
     //
-    _setUserProfileState(state);
+    _setUserProfileState(status);
   }
 
   /// -------------------------------------------------------------------------
