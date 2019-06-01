@@ -12,4 +12,5 @@ class TagsHelper {
   static String translation(Tags tag){
     return allTranslations.text('tags.${tag.toString()}');
   }
+
 }
