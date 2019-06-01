@@ -134,6 +134,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.white,
                     ),
                   ),
+                  Text(
+                    'description',
+                    style: TextStyle(
+                        fontFamily: 'SourceSansPro',
+                        color: Colors.blueGrey.shade800,
+                        fontSize: 20,
+                        letterSpacing: 2.5,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
