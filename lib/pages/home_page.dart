@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mentor/models/request.dart';
-import 'package:flutter_mentor/widgets/request_card.dart';
 
 const double _kTopMargin = 10.0;
 
@@ -23,7 +22,6 @@ class _HomePageState extends State<HomePage> {
           .where("userId", isEqualTo: 123)
           .snapshots()
           .listen((data) {
-
         cardList = data.documents.map((document) {
           Request request = Request.fromMap(document.data);
 
@@ -53,7 +51,7 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         }).toList();
-        setState((){});
+        setState(() {});
       });
     });
   }
@@ -80,7 +78,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-
 class RequestCard extends StatelessWidget {
   RequestCard({
     Key key,
@@ -88,7 +85,7 @@ class RequestCard extends StatelessWidget {
     this.green,
     this.blue,
     this.requestText,
-  }): super(key: key);
+  }) : super(key: key);
 
   final int red;
   final int green;
@@ -99,8 +96,7 @@ class RequestCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 12,
-      color: Color.fromARGB(
-          255, red, green, blue),
+      color: Color.fromARGB(255, red, green, blue),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Container(
         width: 340,
