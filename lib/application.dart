@@ -47,8 +47,10 @@ class _ApplicationState extends State<Application> {
   void choseHomePage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool hasSeenOnBoarding = prefs.getBool('oboarding.hasSeen');
-    homePage = hasSeenOnBoarding == null || hasSeenOnBoarding == false
-        ? OnBoardingPage()
-        : LoginPage();
+    setState(() {
+      homePage = hasSeenOnBoarding == null || hasSeenOnBoarding == false
+          ? OnBoardingPage()
+          : LoginPage();
+    });
   }
 }
