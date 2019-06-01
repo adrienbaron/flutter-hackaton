@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mentor/services/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,7 +9,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  AuthService service;
+  String errorMessage;
+  bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,15 @@ class _LoginPageState extends State<LoginPage> {
             child: RaisedButton(
               child: Text('Sign-in with Google'),
               onPressed: () async {
-                await service.googleSignIn();
-                Navigator.pushNamed(context, '/home');
+                FirebaseUser user = await AuthService().googleSignIn();
+                errorMessage = null;
+                isLoading = true;
+                if (user != null) {
+                  Navigator.pushNamed(context, '/home');
+                } else {
+                  errorMessage = "Please login to access the app.";
+                }
+                isLoading = false;
               },
             ),
           ),
@@ -35,8 +44,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-
-    service = AuthService();
+    isLoading = false;
     hasSeenOnBoarding();
   }
 
