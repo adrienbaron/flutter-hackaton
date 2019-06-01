@@ -105,9 +105,15 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 500,
               child: Column(
                 children: <Widget>[
-                  ListTile(title: Text('Name:')),
-                  ListTile(title: Text('Email:')),
-                  ListTile(title: Text('Flutter Interests:')),
+                  Card(
+                      margin: EdgeInsets.all(10),
+                      child: ListTile(title: Text('Name:'))),
+                  Card(
+                      margin: EdgeInsets.all(10),
+                      child: ListTile(title: Text('Email:'))),
+                  Card(
+                      margin: EdgeInsets.all(10),
+                      child: ListTile(title: Text('Flutter Interests:'))),
                 ],
               ),
             ),
