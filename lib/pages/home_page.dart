@@ -107,13 +107,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Card(
                       margin: EdgeInsets.all(10),
-                      child: ListTile(title: Text('Name:'))),
+                      child: ListTile(
+                        title: Text('Name:'),
+                        leading: Icon(Icons.person),
+                      )),
                   Card(
                       margin: EdgeInsets.all(10),
-                      child: ListTile(title: Text('Email:'))),
+                      child: ListTile(
+                        title: Text('Email:'),
+                        leading: Icon(Icons.email),
+                      )),
                   Card(
                       margin: EdgeInsets.all(10),
-                      child: ListTile(title: Text('Flutter Interests:'))),
+                      child: ListTile(
+                        title: Text('Flutter Interests:'),
+                        leading: Icon(Icons.view_headline),
+                      )),
                 ],
               ),
             ),
