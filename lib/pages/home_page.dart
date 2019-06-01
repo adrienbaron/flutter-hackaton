@@ -20,9 +20,9 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'Flutter Card Stack'),
+      home: MyHomePage(title: 'Choose Your Mentor'),
     );
   }
 }
@@ -103,6 +103,39 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               width: 340,
               height: 500,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.blueGrey.shade500,
+                    backgroundImage: AssetImage('images'),
+                  ),
+                  Text(
+                    'Name',
+                    style: TextStyle(
+                      fontFamily: 'Pacifico',
+                      color: Colors.white,
+                      fontSize: 35,
+                    ),
+                  ),
+                  Text(
+                    'email',
+                    style: TextStyle(
+                        fontFamily: 'SourceSansPro',
+                        color: Colors.blueGrey.shade800,
+                        fontSize: 20,
+                        letterSpacing: 2.5,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Divider(
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
