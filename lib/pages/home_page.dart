@@ -104,25 +104,36 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 340,
               height: 500,
               child: Column(
-                children: <Widget>[
-                  Card(
-                      margin: EdgeInsets.all(10),
-                      child: ListTile(
-                        title: Text('Name:'),
-                        leading: Icon(Icons.person),
-                      )),
-                  Card(
-                      margin: EdgeInsets.all(10),
-                      child: ListTile(
-                        title: Text('Email:'),
-                        leading: Icon(Icons.email),
-                      )),
-                  Card(
-                      margin: EdgeInsets.all(10),
-                      child: ListTile(
-                        title: Text('Flutter Interests:'),
-                        leading: Icon(Icons.view_headline),
-                      )),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.blueGrey.shade500,
+                    backgroundImage: AssetImage('images'),
+                  ),
+                  Text(
+                    'Name',
+                    style: TextStyle(
+                      fontFamily: 'Pacifico',
+                      color: Colors.white,
+                      fontSize: 35,
+                    ),
+                  ),
+                  Text(
+                    'email',
+                    style: TextStyle(
+                        fontFamily: 'SourceSansPro',
+                        color: Colors.blueGrey.shade800,
+                        fontSize: 20,
+                        letterSpacing: 2.5,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Divider(
+                      color: Colors.white,
+                    ),
+                  ),
                 ],
               ),
             ),
