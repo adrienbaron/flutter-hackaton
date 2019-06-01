@@ -18,59 +18,66 @@ class _LoginPageState extends State<LoginPage> {
       top: false,
       bottom: false,
       child: Scaffold(
-        appBar: AppBar(title: Text("Authentication")),
         body: Container(
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("assets/images/login_background.jpg"),
+              fit: BoxFit.cover,
+            )
+          ),
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                RaisedButton(
-                  child: isLoading
-                      ? CircularProgressIndicator(
-                          value: null,
-                          backgroundColor: Colors.black45,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.black),
-                        )
-                      : Row(
-                          children: <Widget>[
-                            Padding(
-                              child: Icon(Icons.person),
-                              padding: EdgeInsets.only(right: 8.0),
-                            ),
-                            Text('Sign-in with Google'),
-                          ],
-                          mainAxisSize: MainAxisSize.min,
-                        ),
-                  onPressed: isLoading
-                      ? null
-                      : () async {
-                          setState(() {
-                            isLoading = true;
-                            errorMessage = null;
-                          });
-                          FirebaseUser user =
-                              await AuthService().googleSignIn();
-                          if (user == null) {
+            child: SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  RaisedButton(
+                    child: isLoading
+                        ? CircularProgressIndicator(
+                            value: null,
+                            backgroundColor: Colors.black45,
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.black),
+                          )
+                        : Row(
+                            children: <Widget>[
+                              Padding(
+                                child: Icon(Icons.person),
+                                padding: EdgeInsets.only(right: 8.0),
+                              ),
+                              Text('Sign-in with Google'),
+                            ],
+                            mainAxisSize: MainAxisSize.min,
+                          ),
+                    onPressed: isLoading
+                        ? null
+                        : () async {
                             setState(() {
-                              errorMessage = "Please login to access the app.";
+                              isLoading = true;
+                              errorMessage = null;
                             });
-                          } else {
-                            Navigator.pushNamed(context, '/home');
-                          }
-                          setState(() {
-                            isLoading = false;
-                          });
-                        },
-                  padding: EdgeInsets.all(12),
-                ),
-                if (errorMessage != null)
-                  Padding(
+                            FirebaseUser user =
+                                await AuthService().googleSignIn();
+                            if (user == null) {
+                              setState(() {
+                                errorMessage = "Please login to access the app.";
+                              });
+                            } else {
+                              Navigator.pushNamed(context, '/home');
+                            }
+                            setState(() {
+                              isLoading = false;
+                            });
+                          },
                     padding: EdgeInsets.all(12),
-                    child: Text(errorMessage),
-                  )
-              ],
+                  ),
+                  if (errorMessage != null)
+                    Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Text(errorMessage),
+                    )
+                ],
+              ),
             ),
           ),
         ),
