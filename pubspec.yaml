@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
+
   flutter_localizations:
     sdk: flutter
 
@@ -23,7 +23,7 @@ dependencies:
   fancy_on_boarding: ^1.2.0
   http: '0.11.3+17'
   rxdart: '0.21.0'
-  shared_preferences: '0.4.2'
+  shared_preferences: '0.5.3'
 
 dev_dependencies:
   flutter_test:
