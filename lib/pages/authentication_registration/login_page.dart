@@ -10,7 +10,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String errorMessage;
-  bool isLoading;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +21,47 @@ class _LoginPageState extends State<LoginPage> {
         appBar: AppBar(title: Text("Authentication")),
         body: Container(
           child: Center(
-            child: RaisedButton(
-              child: Text('Sign-in with Google'),
-              onPressed: () async {
-                FirebaseUser user = await AuthService().googleSignIn();
-                errorMessage = null;
-                isLoading = true;
-                if (user != null) {
-                  Navigator.pushNamed(context, '/home');
-                } else {
-                  errorMessage = "Please login to access the app.";
-                }
-                isLoading = false;
-              },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  child: isLoading
+                      ? CircularProgressIndicator(
+                          value: null,
+                          backgroundColor: Colors.black45,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.black),
+                        )
+                      : Text('Sign-in with Google'),
+                  onPressed: isLoading
+                      ? null
+                      : () async {
+                          setState(() {
+                            isLoading = true;
+                            errorMessage = null;
+                          });
+                          FirebaseUser user =
+                              await AuthService().googleSignIn();
+                          if (user == null) {
+                            setState(() {
+                              errorMessage = "Please login to access the app.";
+                            });
+                          } else {
+                            Navigator.pushNamed(context, '/home');
+                          }
+                          setState(() {
+                            isLoading = false;
+                          });
+                        },
+                  padding: EdgeInsets.all(12),
+                ),
+                if (errorMessage != null)
+                  Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Text(errorMessage),
+                  )
+              ],
             ),
           ),
         ),
